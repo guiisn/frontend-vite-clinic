@@ -12,5 +12,15 @@ export const getImageByOption = (path: string) => {
       return healthSecretary;
     case "clinic-adms":
       return healthSecretary;
+    case "therapists":
+      return healthSecretary;
+    case "procedures":
+      return healthSecretary;
+    case "patients":
+      return healthSecretary;
+    case "coordinators":
+      return healthSecretary;
+    case "administrative-secretaries":
+      return healthSecretary;
   }
 };

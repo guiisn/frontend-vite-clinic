@@ -2,10 +2,14 @@ import AdministrativeSecretaries from "../../pages/ClinicAdm/AdministrativeSecre
 import ClinicAdms from "../../pages/ClinicAdm/ClinicAdms";
 import CreateClinicAdm from "../../pages/ClinicAdm/ClinicAdms/CreateClinicAdm";
 import Coordinators from "../../pages/ClinicAdm/Coordinators";
+import CreateCoordinator from "../../pages/ClinicAdm/Coordinators/CreateCoordinator";
 import Dashboard from "../../pages/ClinicAdm/Dashboard";
 import Patients from "../../pages/ClinicAdm/Patients";
+import CreatePatient from "../../pages/ClinicAdm/Patients/CreatePatient";
 import Procedures from "../../pages/ClinicAdm/Procedures";
+import CreateProcedure from "../../pages/ClinicAdm/Procedures/CreateProcedure";
 import Therapists from "../../pages/ClinicAdm/Therapists";
+import CreateTherapist from "../../pages/ClinicAdm/Therapists/CreateTherapist";
 
 const identify = "clinicAdm";
 
@@ -31,13 +35,28 @@ export const clinicAdmRoutes = [
     isPrivate: true,
   },
   {
+    path: `/${identify}/procedures/create`,
+    element: CreateProcedure,
+    isPrivate: true,
+  },
+  {
     path: `/${identify}/patients`,
     element: Patients,
     isPrivate: true,
   },
   {
+    path: `/${identify}/patients/create`,
+    element: CreatePatient,
+    isPrivate: true,
+  },
+  {
     path: `/${identify}/coordinators`,
     element: Coordinators,
+    isPrivate: true,
+  },
+  {
+    path: `/${identify}/coordinators/create`,
+    element: CreateCoordinator,
     isPrivate: true,
   },
   {
@@ -48,6 +67,11 @@ export const clinicAdmRoutes = [
   {
     path: `/${identify}/therapists`,
     element: Therapists,
+    isPrivate: true,
+  },
+  {
+    path: `/${identify}/therapists/create`,
+    element: CreateTherapist,
     isPrivate: true,
   },
 ];

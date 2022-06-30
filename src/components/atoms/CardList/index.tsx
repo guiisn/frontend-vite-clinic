@@ -6,12 +6,29 @@ import { Icon } from "@iconify/react";
 import { useState } from "react";
 import ModalConfirm from "../ModalConfirm";
 import { useMutation } from "react-query";
-import { removeClinic, removeHealthSecretary } from "./request";
+import {
+  removeAdministrativeSecretaries,
+  removeClinic,
+  removeClinicAdm,
+  removeCoordinators,
+  removeHealthSecretary,
+  removePatients,
+  removeProcedures,
+  removeTherapists,
+} from "./request";
 
 interface CardListProps {
   name: string;
   id: string;
-  type: "clinic" | "healthSecretary" | "clinicAdms";
+  type:
+    | "clinic"
+    | "healthSecretary"
+    | "clinicAdms"
+    | "procedures"
+    | "patients"
+    | "coordinators"
+    | "admSecretaries"
+    | "therapists";
 }
 
 export default function CardList({
@@ -25,7 +42,21 @@ export default function CardList({
   const handleClose = () => setOpen(false);
 
   const { mutate } = useMutation(
-    type === "clinic" ? removeClinic : removeHealthSecretary,
+    type === "clinic"
+      ? removeClinic
+      : type === "healthSecretary"
+      ? removeHealthSecretary
+      : type === "clinicAdms"
+      ? removeClinicAdm
+      : type === "procedures"
+      ? removeProcedures
+      : type === "patients"
+      ? removePatients
+      : type === "coordinators"
+      ? removeCoordinators
+      : type === "admSecretaries"
+      ? removeAdministrativeSecretaries
+      : removeTherapists,
     {
       onSuccess: (data: any) => {
         window.location.reload();

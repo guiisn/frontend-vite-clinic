@@ -11,7 +11,15 @@ interface ListingProps {
   title: string;
   textButton: string;
   link: string;
-  type: "clinic" | "healthSecretary" | "clinicAdms";
+  type:
+    | "clinic"
+    | "healthSecretary"
+    | "clinicAdms"
+    | "procedures"
+    | "patients"
+    | "coordinators"
+    | "admSecretaries"
+    | "therapists";
 }
 
 export default function Listing({
