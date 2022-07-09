@@ -6,6 +6,7 @@ import { useMutation } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import ButtonAction from "../../atoms/ButtonAction";
 import InputAction from "../../atoms/InputAction";
+import Select from "../../atoms/Select";
 import TitleText from "../../atoms/TitleText";
 import { createTherapist } from "./request";
 import { schema } from "./schema";
@@ -17,6 +18,15 @@ export interface ITherapist {
   password: string;
   confirmPassword: string;
 }
+
+export interface ISelect {
+  label: string
+  value: string
+}
+
+const offices = [
+  {label: 'Psicologo', value: 'psicologo'}
+] as ISelect[];
 
 export default function TherapistForm() {
   const navigate = useNavigate();
@@ -32,6 +42,8 @@ export default function TherapistForm() {
   } = useForm<ITherapist>({ resolver: yupResolver(schema) });
 
   const handleChange = (event: any) => {
+    console.log(event.target.name, event.target.value);
+    
     setValue(event.target.name, event.target.value);
     setError("confirmPassword", {
       type: "custom",
@@ -79,15 +91,8 @@ export default function TherapistForm() {
         name="email"
         onChange={handleChange}
       />
-      <InputAction
-        label="Profissão do Terapeuta"
-        variant="outlined"
-        fullWidth
-        required
-        type="text"
-        name="office"
-        onChange={handleChange}
-      />
+      <Select label="Profissão do Terapeuta" values={offices} name="office"
+        onChange={handleChange} />
       <Box
         sx={{
           display: "flex",
